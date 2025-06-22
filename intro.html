@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhi Weather</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <title>Weather Ai</title>
+    <style>
+        :root {
+            --bg: #f2f7ff;
+            --fg: #333;
+            --primary: #1186f6;
+            --card-bg: #fff;
+            --transition: 0.3s;
+        }
+        [data-theme="dark"] {
+          --bg: #1e1e28;
+          --fg: #eee;
+          --card-bg: #2a2a38;
+        }
+        * 
+        { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Poppins', sans-serif;
+        }
+        body
+        {
+            position: relative;
+            min-height: 100vh;
+            background: #1e1e28;
+            color: white;
+        }
+        header 
+        {
+            position: fixed;
+            width: 100%;
+            height: 50px;
+            padding: 10px;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(6px);
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+        }
+        .aLink
+        {
+            padding: 5px 10px;
+            background-color: #1186f6;
+            color: white;
+            border-radius: 25px;
+            text-decoration: none;
+            border: 2px solid #1186f6;
+            transition: 1s;
+        }
+        main 
+        {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .worlda
+        {
+            position: relative;
+            height: 100vh;
+            /* margin-top: 32px; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-image: url('../static/msunny.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .worldb
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+        .title
+        {
+            text-align: center;
+            font-size: 50px;
+        }
+        .contaienra
+        {
+            position: relative;
+            width: 50%;
+        }
+        .containerb
+        {
+            position: relative;
+            height: 323px;
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            animation: fadeInRight 1s ease-in-out;
+        }
+        .contaienre
+        {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .imga
+        {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+        .imga:hover {
+            transform: scale(1.01);
+        }
+        li
+        {
+            list-style: square;
+            margin-left: 20px;
+        }
+        .subBoxes
+        {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .subContent
+        {
+            position: relative;
+            background-color: #2a2a38;
+            border-radius: 10px;
+            height: 100%;
+            padding: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            transition: 1s;
+            cursor: pointer;
+        }
+        .subContent:hover 
+        {
+            background-color: #1186f6;
+        }
+        .downloadContainer
+        {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+        }
+        .downloadBut
+        {
+            position: relative;
+            width: 30%;
+            padding: 8px 10px;
+            background-color: #2a2a38;
+            color: white;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.5);
+            transition: 1s;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .downloadBut:hover 
+        {
+            background-color: #1186f6;
+        }
+        .aHref
+        {
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+        .downloadBut:hover .aHref
+        {
+            text-decoration: underline;
+        }
+        @keyframes fadeInUp {
+            0% { transform: translateY(30px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes fadeInRight {
+            0% { transform: translateX(30px); opacity: 0; }
+            100% { transform: translateX(0); opacity: 1; }
+        }
+         footer {
+      text-align:center;
+      padding:1.5rem;
+      font-size:.875rem;
+    }
+    .theme-switch {
+      background: none; border: none; font-size:1.25rem;
+      cursor: pointer; color: var(--fg);
+    }
+        @media (max-width: 750px) {
+            .worlda
+            {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                /* margin-top: 43px; */
+            }
+            .worldb
+            {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+            }
+            .title
+            {
+                font-size: 30px;
+            }
+            .contaienra
+            {
+                width: 100%;
+            }
+            .containerb
+            {
+                height: auto;
+                width: 100%;
+            }
+            .contaienre
+            {
+                width: 100%;
+            }
+            .imga
+            {
+                width: 100%;
+            }
+            .downloadBut
+            {
+                width: 100%;
+            }
+        }
+        @media (max-width: 520px) {
+            .subBoxes
+            {
+                flex-direction: column;
+            }
+            .downloadBut
+            {
+                width: 100%;
+            }
+            .downloadContainer
+            {
+                flex-direction: column;
+            }
+        }
+        @media (max-width: 399px) {
+            header
+            {
+                height: max-content;
+                flex-wrap: wrap;
+            }
+            .aLink
+            {
+                width: 100%;
+                text-align: center;
+            }
+            .downloadBut
+            {
+                width: 100%;
+            }
+        }
+        @media (max-width: 370px) {
+            .worlda
+            {
+                /* margin-top: 64px; */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Abhi Weather</h1>
+        <a href="#downloadsection" class="aLink">Download Now</a>
+    </header>
+    <main>
+        <div class="worlda" data-aos="fade-up">
+            <h1 class="title">Welcome to Abhi Weather<br>Your smart AI weather<span style="color: #1186f6;">.</span></h1>
+        </div>
+        <div class="worldb" data-aos="fade-left">
+            <div class="containerb">
+                <img src='../static/webui.png' alt="" srcset="" class="imga">
+            </div>
+            <div class="containerb">
+                <img src='../static/mobileui.png' alt="" srcset="" class="imga">
+            </div>
+        </div>
+        <div>
+            <div class="contaienre">
+                 <p>Stay on step ahead of the weather with Abhi Weather, Your intelligent AI-powered weather prediction platflorm Whether you are planning your day, your weak, or just stepping out for a walk, we have got you covered with real-time and future weather insights all powered by advanced machine learning model.</p>
+                 <p>Real time weather at a glance.Get accurate and up-to-the-hour data for your location, including:</p>
+                 <ul>
+                    <li>Temperature: know exactly how hot or cold it is.</li>
+                    <li>Humidity: Understand the moisture in the air.</li>
+                    <li>Humidity: Understand the moisture in the air.</li>
+                    <li>Weather Label: Clear, Cloudly, Rainy, or Stormy? I will tell you instanly.</li>
+                    <li>UV Index: Stay protected with UV level alerts.</li>
+                    <li>Smart Recommendations: Personalized tips based on live conditions (e.g., 'Carry an umbrella, or 'Wear sunscreen).</li>
+                 </ul>
+                 <div class="subBoxes">
+                    <p class="subContent">24-hour Forcast Plan your entire day with hourly breakdowns of Temperature trends, Rain chances, Wind speed, Humidity levels, Weather labels and alerts let our AI model predict the patterns so you can avoid sudden changes and prepare in advance.</p>
+                    <p class="subContent">7-Days Outlook Get a comprehensive weekly forcast to organize your events,trips, or work schedules Daily hights and lows, Rain and storm warnings, Wind and UV trends, Smart weekly Recommendations tailored to your region.</p>
+                 </div>
+                 <h2>Why choose Abhi Weather?</h2>
+                 <p>AI Accuracy - Built on advanced weather models trained on global data.<br>Smart Suggestions - NOT just data, but actionable advice.<br>User-Friendly - Clean, intuitive, and mobile friendly interface.<br>Global Coverage - Get forecasts from cities to remote villages worldwide.<br><br>-Start using Abhi Weather today and make every moment weather-smart?</p>
+            </div>
+        </div>
+        <h2 style="margin-left: 10px;">Download Abhi Weather</h2>
+        <div class="downloadContainer" id="downloadsection">
+            <div class="downloadBut">
+                <a href="../dist/Abhi Weather.zip" class="aHref" download>Download for Desktop</a>
+                <p>24</p>
+            </div>
+            <div class="downloadBut">
+                <a href="welcome.html" class="aHref" download="../static/webui.png">Download for Andriod</a>
+                <p>24</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Abhi Weather | <spam style="color: #1186f6;">Version 1.0.0</spam></p>
+    </footer>
+</body>
+</html>
